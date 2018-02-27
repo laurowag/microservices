@@ -43,6 +43,11 @@ public class Servico1 {
 		Cliente cli = em.find(Cliente.class, 2);
 		
 		Receita rec = em.find(Receita.class, 21);
+		
+		if (rec == null) {
+			rec = new Receita();
+		}
+		
 		rec.setId(21);
 		rec.setCliente(cli);
 		rec.setRt(cli);
@@ -51,8 +56,10 @@ public class Servico1 {
 		em.persist(rec);
 		
 		//A View permite eu alterar a outra classe
-		//cli.setNome(cli.getNome() + ".");
-		//em.persist(cli);
+		cli.setNome(cli.getNome() + ".");
+		em.persist(cli);
+		
+		em.refresh(cli);
 		
 		TypedQuery<Receita> sql = em.createQuery("select rec from Receita rec join fetch rec.cliente join fetch rec.rt", Receita.class);
 		return Response.ok().entity(sql.getResultList()).build();		

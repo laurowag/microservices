@@ -62,17 +62,19 @@
 			<version>7.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.2.13.Final</version>
+			<scope>provided</scope>
+		</dependency>
 		<!-- WildFly Swarm Fractions -->
 		<dependency>
 			<groupId>org.wildfly.swarm</groupId>
 			<artifactId>jaxrs</artifactId>
 		</dependency>
-		<!-- 
-		<dependency>
-			<groupId>org.wildfly.swarm</groupId>
-			<artifactId>ejb</artifactId>
-		</dependency>
-		 -->
+		<!-- <dependency> <groupId>org.wildfly.swarm</groupId> <artifactId>ejb</artifactId> 
+			</dependency> -->
 		<dependency>
 			<groupId>org.wildfly.swarm</groupId>
 			<artifactId>cdi</artifactId>
