@@ -89,6 +89,10 @@
 			<artifactId>datasources</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.wildfly.swarm</groupId>
+			<artifactId>logstash</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>
 			<artifactId>mssql-jdbc</artifactId>
 			<version>6.2.2.jre8</version>
@@ -125,17 +129,21 @@
 												<files>
 													<file>
 														<source>${project.build.directory}/../project-defaults.yml</source>
-														<outputDirectory>app</outputDirectory>
+														<outputDirectory>/opt/app</outputDirectory>
 													</file>
 													<file>
 														<source>${project.build.directory}/microservice-swarm.jar</source>
-														<outputDirectory>app</outputDirectory>
+														<outputDirectory>/opt/app</outputDirectory>
+													</file>
+													<file>
+														<source>${project.basedir}/cacerts</source>
+														<outputDirectory>/opt/app</outputDirectory>
 													</file>
 												</files>
 											</inline>
 										</assembly>
 										<entryPoint>
-											<shell>java -jar app/microservice-swarm.jar -sapp/project-defaults.yml -Dswarm.bind.address=$(hostname -I | cut -d' ' -f1) -DapplicationName=${project.artifactId}-${project.version}</shell>
+										 	<shell>java -jar /opt/app/microservice-swarm.jar -s/opt/app/project-defaults.yml -Dswarm.bind.address=$(hostname -I | cut -d' ' -f1) -DapplicationName=${project.artifactId}-${project.version} -Djavax.net.ssl.trustStore=/opt/app/cacerts -Djavax.net.ssl.trustStorePassword=mynewcar</shell>
 										</entryPoint>
 									</build>
 								</image>
