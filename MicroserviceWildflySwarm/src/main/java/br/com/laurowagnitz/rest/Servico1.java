@@ -1,6 +1,7 @@
 package br.com.laurowagnitz.rest;
 
 import java.util.Date;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -60,6 +61,10 @@ public class Servico1 {
 		em.persist(cli);
 		
 		em.refresh(cli);
+		
+		for (String key : System.getenv().keySet()) {
+			System.out.println("****"+key+": "+System.getenv(key));
+		}
 		
 		TypedQuery<Receita> sql = em.createQuery("select rec from Receita rec join fetch rec.cliente join fetch rec.rt", Receita.class);
 		return Response.ok().entity(sql.getResultList()).build();		

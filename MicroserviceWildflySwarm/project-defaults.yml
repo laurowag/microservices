@@ -3,6 +3,9 @@ swarm:
     data-sources:
       RecDS:
         driver-name: sqlserver
-        connection-url: jdbc:sqlserver://localhost:1433;DatabaseName=rec
-        user-name: tenant2
-        password: tenant212345@!
+        connection-url: ${env.DATABASE_URI}
+        user-name: ${env.DATABASE_USER}
+        password: ${env.DATABASE_PASSWORD}
+  topology:
+    consul:
+      url: ${env.CONSUL_SERVER}
