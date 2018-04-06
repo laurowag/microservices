@@ -150,14 +150,7 @@
                                             </inline>
                                         </assembly>
                                         <entryPoint>
-                                            <shell>java -jar
-                                                /opt/app/microservice-swarm.jar
-                                                -s/opt/app/project-defaults.yml
-                                                -Dswarm.bind.address=$(hostname
-                                                -I | cut -d' ' -f1)
-                                                -DapplicationName=${project.artifactId}-${project.version}
-                                                -Djavax.net.ssl.trustStore=/opt/app/cacerts
-                                                -Djavax.net.ssl.trustStorePassword=mynewcar</shell>
+                                            <shell>java -jar /opt/app/microservice-swarm.jar -s/opt/app/project-defaults.yml -Dswarm.bind.address=$(hostname -I | cut -d' ' -f1)-DapplicationName=${project.artifactId}-${project.version} -Djavax.net.ssl.trustStore=/opt/app/cacerts -Djavax.net.ssl.trustStorePassword=mynewcar</shell>
                                         </entryPoint>
                                     </build>
                                 </image>
