@@ -119,7 +119,7 @@
                             </authConfig>
                             <images>
                                 <image>
-                                    <name>${project.build.finalName}</name>
+                                    <name>${project.build.finalName}:latest</name>
                                     <run>
                                         <ports>
                                             <port>8080:8080</port>
@@ -136,21 +136,21 @@
                                                 <files>
                                                     <file>
                                                         <source>${project.build.directory}/../project-defaults.yml</source>
-                                                        <outputDirectory>/opt/app</outputDirectory>
+                                                        <outputDirectory>app</outputDirectory>
                                                     </file>
                                                     <file>
                                                         <source>${project.build.directory}/microservice-swarm.jar</source>
-                                                        <outputDirectory>/opt/app</outputDirectory>
+                                                        <outputDirectory>app</outputDirectory>
                                                     </file>
                                                     <file>
                                                         <source>${project.basedir}/cacerts</source>
-                                                        <outputDirectory>/opt/app</outputDirectory>
+                                                        <outputDirectory>app</outputDirectory>
                                                     </file>
                                                 </files>
                                             </inline>
                                         </assembly>
                                         <entryPoint>
-                                            <shell>java -jar /opt/app/microservice-swarm.jar -s/opt/app/project-defaults.yml -Dswarm.bind.address=$(hostname -I | cut -d' ' -f1)-DapplicationName=${project.artifactId}-${project.version} -Djavax.net.ssl.trustStore=/opt/app/cacerts -Djavax.net.ssl.trustStorePassword=mynewcar</shell>
+                                            <shell>java -jar app/microservice-swarm.jar -sapp/project-defaults.yml -Dswarm.bind.address=$(hostname -I | cut -d' ' -f1)-DapplicationName=${project.artifactId}-${project.version}</shell>
                                         </entryPoint>
                                     </build>
                                 </image>
