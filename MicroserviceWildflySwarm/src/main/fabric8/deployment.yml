@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ${project.artifactId}
+  labels:
+    run: microservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: microservice
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: microservice-teste
+    spec:
+      containers:
+      - image: ${docker.image.prefix}/${project.artifactId}:latest
+        name: microservice
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+        - name: mysecrets
