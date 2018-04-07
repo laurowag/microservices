@@ -6,11 +6,3 @@ swarm:
         connection-url: ${env.DATABASE_URI}
         user-name: ${env.DATABASE_USER}
         password: ${env.DATABASE_PASSWORD}
-  topology:
-    consul:
-      url: ${env.CONSUL_SERVER}
-  logstash:
-    enabled: true
-    hostname: ${env.LOGSTASH_SERVER}
-    port: ${env.LOGSTASH_PORT}
-    level: INFO

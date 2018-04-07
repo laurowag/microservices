@@ -1,7 +1,6 @@
 package br.com.laurowagnitz.rest;
 
 import java.util.Date;
-import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
