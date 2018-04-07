@@ -22,7 +22,7 @@ import javax.ws.rs.container.TimeoutHandler;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import br.com.laurowagnitz.model.Cliente;
+import br.com.laurowagnitz.model.Person;
 import br.com.laurowagnitz.model.Receita;
 
 @Path("")
@@ -40,33 +40,16 @@ public class Servico1 {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response servicoSync() {
 		
-		Cliente cli = em.find(Cliente.class, 2);
-		
-		Receita rec = em.find(Receita.class, 21);
-		
-		if (rec == null) {
-			rec = new Receita();
+		Person person = em.find(Person.class, 1);
+
+		if (person == null) {
+			person = new Person();
+			person.setId(1);
+			person.setName("Lauro Wagnitz");
+			em.persist(person);
 		}
 		
-		rec.setId(21);
-		rec.setCliente(cli);
-		rec.setRt(cli);
-		rec.setData(new Date());
-		rec.setRecomendacao("Eee deu certo!!!");
-		em.persist(rec);
-		
-		//A View permite eu alterar a outra classe
-		cli.setNome(cli.getNome() + ".");
-		em.persist(cli);
-		
-		em.refresh(cli);
-		
-		for (String key : System.getenv().keySet()) {
-			System.out.println("****"+key+": "+System.getenv(key));
-		}
-		
-		TypedQuery<Receita> sql = em.createQuery("select rec from Receita rec join fetch rec.cliente join fetch rec.rt", Receita.class);
-		return Response.ok().entity(sql.getResultList()).build();		
+		return Response.ok().entity(person).build();		
 	}
 
 

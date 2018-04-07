@@ -1,18 +1,30 @@
-apiVersion: 1.0
+apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: testes:latest
+  name: testes-container
+  labels:
+    app: testes
 spec:
+  selector:
+    matchLabels:
+      app: testes
   replicas: 3
   template:
     metadata:
       labels:
-        app: testes:latest
+        app: testes
     spec:
       containers:
       - name: testes-container
-        image: laurowag/testes:latest
+        image: registry.hub.docker.com/laurowag/testes:latest
+        env:
+        - name: DATABASE_URI
+          value: "jdbc:sqlserver://laurowagnitz.database.windows.net:1433;database=receituario;user=sysdba@laurowagnitz;password=lw2010@!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
+        - name: DATABASE_USER
+          value: "sysdba"
+        - name: DATABASE_PASSWORD
+          value: "lw2010@!"
         ports:
         - containerPort: 8080
       imagePullSecrets:
-      - name: $KUBERNETES_SECRET_NAME
+      - name: regcred
