@@ -114,8 +114,8 @@
                         <configuration>
                             <registry>https://hub.docker.com/r/laurowag</registry>
                             <authConfig>
-                                <username>jolokia</username>
-                                <password>s!cr!t</password>
+                                <username>laurowag</username>
+                                <password>lw2010@!</password>
                             </authConfig>
                             <images>
                                 <image>
