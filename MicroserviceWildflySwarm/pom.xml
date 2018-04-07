@@ -112,14 +112,14 @@
                         <artifactId>docker-maven-plugin</artifactId>
                         <version>0.24.0</version>
                         <configuration>
-                            <registry>https://hub.docker.com/r/laurowag/testes</registry>
+                            <registry>https://hub.docker.com/r/laurowag</registry>
                             <authConfig>
                                 <username>jolokia</username>
                                 <password>s!cr!t</password>
                             </authConfig>
                             <images>
                                 <image>
-                                    <name>${project.build.finalName}:latest</name>
+                                    <name>testes</name>
                                     <run>
                                         <ports>
                                             <port>8080:8080</port>
