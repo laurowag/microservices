@@ -14,6 +14,7 @@ import javax.transaction.Transactional;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.container.AsyncResponse;
@@ -37,18 +38,15 @@ public class Servico1 {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response servicoSync() {
-		
-		Person person = em.find(Person.class, 1);
+	public Response listar() {
+		return Response.ok().entity(em.createQuery("from Person", Person.class).getResultList()).build();		
+	}
 
-		if (person == null) {
-			person = new Person();
-			person.setId(1);
-			person.setName("Lauro Wagnitz");
-			em.persist(person);
-		}
-		
-		return Response.ok().entity(person).build();		
+	@GET
+	@Path("{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response consultarId(@PathParam("id") int id) {
+		return Response.ok().entity(em.find(Person.class, id)).build();		
 	}
 
 	@POST
