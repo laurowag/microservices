@@ -43,9 +43,9 @@ public class Servico1 {
 	}
 
 	@GET
-	@Path("{idToFind}")
+	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response consultarId(@PathParam("idToFind") int id) {
+	public Response consultarId(@PathParam("id") int id) {
 		return Response.ok().entity(em.find(Person.class, id)).build();		
 	}
 
