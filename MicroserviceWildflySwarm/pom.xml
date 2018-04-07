@@ -112,7 +112,7 @@
                         <artifactId>docker-maven-plugin</artifactId>
                         <version>0.24.0</version>
                         <configuration>
-                            <registry>hub.docker.com:443/r/laurowag</registry>
+                            <registry>registry.hub.docker.com/laurowag</registry>
                             <authConfig>
                                 <username>laurowag</username>
                                 <password>lw2010@!</password>
@@ -154,8 +154,7 @@
                                         </entryPoint>                                        
                                     </build>
                                 </image>
-                            </images>
-                            <skipTag>true</skipTag>                                        
+                            </images>                            
                         </configuration>
                         <executions>
                             <execution>
