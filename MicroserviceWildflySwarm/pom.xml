@@ -130,7 +130,7 @@
                                         </ports>
                                     </run>
                                     <build>
-                                        <from>java:openjdk-8-jdk</from>
+                                        <from>library/java:openjdk-8-jdk</from>
                                         <ports>
                                             <port>8080</port>
                                         </ports>
