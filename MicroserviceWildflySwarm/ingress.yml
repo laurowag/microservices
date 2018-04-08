@@ -4,9 +4,10 @@ metadata:
   namespace: master
   name: microservice-ingress
   annotations:
-    #nginx.ingress.kubernetes.io/rewrite-target: /
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    kubernetes.io/ingress.class: "gce"
+    ingress.kubernetes.io/rewrite-target: /
+    #kubernetes.io/ingress.class: nginx
+    #nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
   - http:
@@ -15,3 +16,15 @@ spec:
         backend:
           serviceName: microservice
           servicePort: 8080
+      - path: /microservice/*
+        backend:
+          serviceName: microservice
+          servicePort: 8080
+      - path: /microservice2
+        backend:
+          serviceName: microservice
+          servicePort: 8080
+      - path: /microservice2/*
+        backend:
+          serviceName: microservice
+          servicePort: 8080          
