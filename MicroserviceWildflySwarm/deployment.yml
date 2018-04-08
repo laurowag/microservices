@@ -17,6 +17,7 @@ spec:
       containers:
       - name: ${JOB_NAME}-${BRANCH}
         image: registry.hub.docker.com/laurowag/${JOB_NAME}:${BRANCH}
+        imagePullPolicy: Always
         env:
         - name: DATABASE_URI
           value: "jdbc:sqlserver://laurowagnitz.database.windows.net:1433;database=receituario;user=sysdba@laurowagnitz;password=lw2010@!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
