@@ -25,7 +25,7 @@ import javax.ws.rs.core.Response;
 
 import br.com.laurowagnitz.model.Person;
 
-@Path("/microservice")
+@Path("/")
 @RequestScoped
 @Transactional
 public class Servico1 {

@@ -155,7 +155,7 @@
                                             </inline>
                                         </assembly>
                                         <entryPoint>
-                                            <shell>java -jar app/microservice-swarm.jar -sapp/project-defaults.yml -Dswarm.bind.address=$(hostname -I | cut -d' ' -f1) -DapplicationName=${project.artifactId}-${project.version}</shell>
+                                            <shell>java -jar app/microservice-swarm.jar -sapp/project-defaults.yml -Dswarm.bind.address=$(hostname -I | cut -d' ' -f1) -DapplicationName=${project.artifactId}-${project.version} -DcontextRoot=${BRANCH}</shell>
                                         </entryPoint>                                        
                                     </build>
                                 </image>
