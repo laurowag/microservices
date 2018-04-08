@@ -1,22 +1,22 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: testes-container
+  name: ${JOB_NAME}-container
   labels:
-    app: testes
+    app: ${JOB_NAME}
 spec:
   selector:
     matchLabels:
-      app: testes
-  replicas: 3
+      app: ${JOB_NAME}
+  replicas: 1
   template:
     metadata:
       labels:
-        app: testes
+        app: ${JOB_NAME}
     spec:
       containers:
-      - name: testes-container
-        image: registry.hub.docker.com/laurowag/testes:latest
+      - name: ${JOB_NAME}-container
+        image: registry.hub.docker.com/laurowag/${JOB_NAME}:${BRANCH}
         env:
         - name: DATABASE_URI
           value: "jdbc:sqlserver://laurowagnitz.database.windows.net:1433;database=receituario;user=sysdba@laurowagnitz;password=lw2010@!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"

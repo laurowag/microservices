@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ${JOB_NAME}-container
+  labels:
+    app: ${JOB_NAME}
+spec:
+  selector:
+    matchLabels:
+      app: ${JOB_NAME}
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: ${JOB_NAME}
+    spec:
+      containers:
+      - name: ${JOB_NAME}-container
+        image: registry.hub.docker.com/laurowag/${JOB_NAME}:${BRANCH}
+        env:
+        - name: DATABASE_URI
+          value: "jdbc:sqlserver://laurowagnitz.database.windows.net:1433;database=receituario;user=sysdba@laurowagnitz;password=lw2010@!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
+        - name: DATABASE_USER
+          value: "sysdba"
+        - name: DATABASE_PASSWORD
+          value: "lw2010@!"
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: regcred
