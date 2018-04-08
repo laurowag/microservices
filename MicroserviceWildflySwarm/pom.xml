@@ -124,7 +124,7 @@
                             </authConfig>
                             <images>
                                 <image>                                    
-                                    <name>laurowag/${BRANCH}</name>
+                                    <name>laurowag/${JOB_NAME}:${BRANCH}</name>
                                     <run>
                                         <ports>
                                             <port>8080:8080</port>
