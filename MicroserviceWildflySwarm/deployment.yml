@@ -28,5 +28,6 @@ spec:
           value: "lw2010@!"
         ports:
         - containerPort: 8080
+      imagePullPolicy: Always
       imagePullSecrets:
       - name: regcred
