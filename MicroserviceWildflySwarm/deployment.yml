@@ -17,6 +17,14 @@ spec:
       containers:
       - name: ${JOB_NAME}-${BRANCH}
         image: registry.hub.docker.com/laurowag/${JOB_NAME}:${BRANCH}
+        args:
+        - /server
+        livenessProbe:
+          httpGet:
+            path: /${BRANCH}
+            port: 8080            
+          initialDelaySeconds: 15
+          periodSeconds: 5
         imagePullPolicy: Always
         env:
         - name: DATABASE_URI

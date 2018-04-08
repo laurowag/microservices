@@ -1,34 +1,19 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: ${JOB_NAME}-ingress
+  name: microservice-ingress
   annotations:
     kubernetes.io/ingress.class: "gce"
+    ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - http:
       paths:
       - path: /master
         backend:
-          serviceName: ${JOB_NAME}-master
+          serviceName: microservice-master
           servicePort: 8080
-      - path: /master/*
-        backend:
-          serviceName: ${JOB_NAME}-master
-          servicePort: 8080
-      - path: /green
-        backend:
-          serviceName: ${JOB_NAME}-green
-          servicePort: 8080
-      - path: /green/*
-        backend:
-          serviceName: ${JOB_NAME}-green
-          servicePort: 8080          
       - path: /blue
         backend:
-          serviceName: ${JOB_NAME}-blue
+          serviceName: microservice-blue
           servicePort: 8080
-      - path: /blue/*
-        backend:
-          serviceName: ${JOB_NAME}-blue
-          servicePort: 8080          
