@@ -18,10 +18,10 @@ spec:
       - name: ${JOB_NAME}-${BRANCH}
         image: registry.hub.docker.com/laurowag/${JOB_NAME}:${BRANCH}
         args:
-        - /${BRANCH}
+        - /
         livenessProbe:
           httpGet:
-            path: /1
+            path: /${BRANCH}/1
             port: 8080
           initialDelaySeconds: 3
           periodSeconds: 3
