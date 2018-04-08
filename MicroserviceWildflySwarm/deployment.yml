@@ -2,7 +2,6 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: ${JOB_NAME}-${BRANCH}
-  namespace: ${BRANCH}
   labels:
     app: ${JOB_NAME}-${BRANCH}
 spec:
@@ -28,6 +27,5 @@ spec:
           value: "lw2010@!"
         ports:
         - containerPort: 8080
-      imagePullPolicy: Always
       imagePullSecrets:
       - name: regcred
