@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: ${JOB_NAME}-${BRANCH}
+  namespace: ${BRANCH}
   labels:
     app: ${JOB_NAME}-${BRANCH}
 spec:
