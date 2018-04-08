@@ -1,21 +1,21 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: ${JOB_NAME}-container
+  name: ${JOB_NAME}-${BRANCH}
   labels:
-    app: ${JOB_NAME}
+    app: ${JOB_NAME}-${BRANCH}
 spec:
   selector:
     matchLabels:
-      app: ${JOB_NAME}
+      app: ${JOB_NAME}-${BRANCH}
   replicas: 3
   template:
     metadata:
       labels:
-        app: ${JOB_NAME}
+        app: ${JOB_NAME}-${BRANCH}
     spec:
       containers:
-      - name: ${JOB_NAME}-container
+      - name: ${JOB_NAME}-${BRANCH}
         image: registry.hub.docker.com/laurowag/${JOB_NAME}:${BRANCH}
         env:
         - name: DATABASE_URI
