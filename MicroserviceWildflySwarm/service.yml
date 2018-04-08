@@ -4,6 +4,8 @@ metadata:
   name: ${JOB_NAME}
   namespace: ${BRANCH}
 spec:
+  selector:
+    app: microservice
   ports:
   - protocol: TCP
     port: 8080
