@@ -24,7 +24,13 @@ spec:
             path: /${BRANCH}
             port: 8080            
           initialDelaySeconds: 60
-          periodSeconds: 5
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /${BRANCH}
+            port: 8080            
+          initialDelaySeconds: 60
+          periodSeconds: 60
         imagePullPolicy: Always
         env:
         - name: DATABASE_URI
