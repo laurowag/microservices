@@ -117,14 +117,14 @@
                         <artifactId>docker-maven-plugin</artifactId>
                         <version>0.24.0</version>
                         <configuration>
-                            <registry>registry.hub.docker.com</registry>
+                            <registry>${DOCKER_REGISTRY_SERVER}</registry>
                             <authConfig>
-                                <username>laurowag</username>
-                                <password>lw2010@!</password>
+                                <username>${DOCKER_REGISTRY_USER}</username>
+                                <password>${DOCKER_REGISTRY_PASSWORD}</password>
                             </authConfig>
                             <images>
                                 <image>                                    
-                                    <name>laurowag/${JOB_NAME}:${BRANCH}</name>
+                                    <name>${DOCKER_REGISTRY_USER}/${JOB_NAME}:${BRANCH}</name>
                                     <run>
                                         <ports>
                                             <port>8080:8080</port>
