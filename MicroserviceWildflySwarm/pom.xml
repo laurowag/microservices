@@ -16,7 +16,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <docker.image.prefix>wingtiptoysregistry.azurecr.io</docker.image.prefix>
         <java.version>1.8</java.version>
-        <branch>development</branch>        
     </properties>
 
     <dependencyManagement>
@@ -124,7 +123,7 @@
                             </authConfig>
                             <images>
                                 <image>                                    
-                                    <name>${DOCKER_REGISTRY_USER}/${JOB_NAME}:${BRANCH}</name>
+                                    <name>${DOCKER_REGISTRY_USER}/${JOB_NAME}:${env.BRANCH}</name>
                                     <run>
                                         <ports>
                                             <port>8080:8080</port>
@@ -155,7 +154,7 @@
                                             </inline>
                                         </assembly>
                                         <entryPoint>
-                                            <shell>java -jar app/microservice-swarm.jar -sapp/project-defaults.yml -Dswarm.bind.address=$(hostname -I | cut -d' ' -f1) -DapplicationName=${project.artifactId}-${project.version} -Dweb.root.context=${BRANCH}</shell>
+                                            <shell>java -jar app/microservice-swarm.jar -sapp/project-defaults.yml -Dswarm.bind.address=$(hostname -I | cut -d' ' -f1) -DapplicationName=${project.artifactId}-${project.version} -Dweb.root.context=${env.BRANCH}</shell>
                                         </entryPoint>                                        
                                     </build>
                                 </image>
