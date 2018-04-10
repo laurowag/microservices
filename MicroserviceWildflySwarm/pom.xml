@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>br.com.laurowagnitz</groupId>
     <artifactId>microservice</artifactId>
-    <name>WildFly Swarm Example</name>
+    <name>Microservice Teste XY</name>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -16,7 +16,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <docker.image.prefix>wingtiptoysregistry.azurecr.io</docker.image.prefix>
         <java.version>1.8</java.version>
-        <branch>development</branch>        
     </properties>
 
     <dependencyManagement>
@@ -136,14 +135,14 @@
                         <artifactId>docker-maven-plugin</artifactId>
                         <version>0.24.0</version>
                         <configuration>
-                            <registry>registry.hub.docker.com</registry>
+                            <registry>${DOCKER_REGISTRY_SERVER}</registry>
                             <authConfig>
-                                <username>laurowag</username>
-                                <password>lw2010@!</password>
+                                <username>${DOCKER_REGISTRY_USER}</username>
+                                <password>${DOCKER_REGISTRY_PASSWORD}</password>
                             </authConfig>
                             <images>
                                 <image>                                    
-                                    <name>laurowag/${JOB_NAME}:${BRANCH}</name>
+                                    <name>${DOCKER_REGISTRY_USER}/${JOB_NAME}:${BRANCH}</name>
                                     <run>
                                         <ports>
                                             <port>8080:8080</port>

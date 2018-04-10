@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ${JOB_NAME}-${BRANCH}
-        image: registry.hub.docker.com/laurowag/${JOB_NAME}:${BRANCH}
+        image: ${DOCKER_REGISTRY}/${JOB_NAME}:${BRANCH}
         args:
         - /server
         livenessProbe:
@@ -34,11 +34,11 @@ spec:
         imagePullPolicy: Always
         env:
         - name: DATABASE_URI
-          value: "jdbc:sqlserver://laurowagnitz.database.windows.net:1433;database=receituario;user=sysdba@laurowagnitz;password=lw2010@!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
+          value: "jdbc:sqlserver://${DATABASE_SERVER};database=receituario;user=${DATABASE_USER}@laurowagnitz;password=${DATABASE_PASSWORD};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
         - name: DATABASE_USER
-          value: "sysdba"
+          value: "${DATABASE_USER}"
         - name: DATABASE_PASSWORD
-          value: "lw2010@!"
+          value: "${DATABASE_PASSWORD}"
         ports:
         - containerPort: 8080
       imagePullSecrets:
