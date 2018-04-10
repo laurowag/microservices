@@ -16,7 +16,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.container.TimeoutHandler;
@@ -37,30 +36,32 @@ public class Servico1 {
 	EntityManager em;
 
 	@GET
+	@Path("person")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response listar() {
 		return Response.ok().entity(em.createQuery("from Person", Person.class).getResultList()).build();		
 	}
 
 	@GET
-	@Path("{idToFind}")
+	@Path("person/{idToFind}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response consultarId(@PathParam("idToFind") int id) {
 		return Response.ok().entity(em.find(Person.class, id)).build();		
 	}
 
 	@POST
+	@Path("person")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response incluir(@QueryParam("id") int id, @QueryParam("name") String name) {		
-		Person person = em.find(Person.class, id);
+	public Response incluir(Person person) {		
+		Person resultado = em.merge(person);
+		return Response.ok().entity(resultado).build();		
+	}
 
-		if (person == null) {
-			person = new Person();
-			person.setId(id);
-		} 		
-		person.setName(name);
-		em.persist(person);
-		return Response.ok().entity(person).build();		
+	@GET
+	@Path("version")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response consultaVersao() {
+		return Response.ok().entity(System.getProperty("build.number")).build();		
 	}
 	
 	@GET
