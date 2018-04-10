@@ -112,6 +112,25 @@
             <id>docker</id>
             <build>
                 <plugins>
+                    <plugin> <!-- PLUGIN PARA ENCONTRAR O NOME DO MODULO -->
+			        	<groupId>org.codehaus.mojo</groupId>
+			        	<artifactId>build-helper-maven-plugin</artifactId>
+			        	<version>1.7</version>
+			        	<executions>
+			          		<execution>
+			            		<id>regex-property</id>
+			            		<goals>
+			              			<goal>regex-property</goal>
+			            		</goals>
+			            		<configuration>
+			              			<name>BRANCH</name>
+			              			<value>${GIT_BRANCH}</value>
+			              			<regex>(origin)[\/](.*)</regex>
+			              			<replacement>$2</replacement>
+			            		</configuration>
+			          		</execution>
+				        </executions>
+			      	</plugin>
                     <plugin>
                         <groupId>io.fabric8</groupId>
                         <artifactId>docker-maven-plugin</artifactId>
