@@ -36,6 +36,12 @@ public class Servico1 {
 	EntityManager em;
 
 	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response statusOk() {
+		return Response.ok().entity(em.createQuery("from Person where id=0", Person.class).getResultList()).build();
+	}
+
+	@GET
 	@Path("person")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response listar() {
