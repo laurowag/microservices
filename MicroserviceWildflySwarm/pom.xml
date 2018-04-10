@@ -16,6 +16,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<docker.image.prefix>wingtiptoysregistry.azurecr.io</docker.image.prefix>
 		<java.version>1.8</java.version>
+		<build.branch>${env.BRANCH}</build.branch>
+		<build.number>${env.BUILD_NUMBER}</build.number>
 	</properties>
 
 	<dependencyManagement>
@@ -106,12 +108,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
-						<configuration>
-							<environmentVariables>
-								<build.branch>${env.BRANCH}</build.branch>
-								<build.number>${env.BUILD_NUMBER}</build.number>
-							</environmentVariables>
-						</configuration>
+						<version>2.21.0</version>
 					</plugin>
 					<plugin>
 						<groupId>io.fabric8</groupId>
