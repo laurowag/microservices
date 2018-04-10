@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ${JOB_NAME}-${BRANCH}
-        image: ${DOCKER_REGISTRY}/${JOB_NAME}:${BRANCH}
+        image: ${DOCKER_REGISTRY_SERVER}/${JOB_NAME}:${BRANCH}
         args:
         - /server
         livenessProbe:
