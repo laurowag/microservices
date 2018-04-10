@@ -104,17 +104,6 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<version>2.21.0</version>
-						<configuration>
-							<environmentVariables>
-								<build.branch>${env.BRANCH}</build.branch>
-								<build.number>${env.BUILD_NUMBER}</build.number>								
-							</environmentVariables>
-						</configuration>
-					</plugin>
-					<plugin>
 						<groupId>io.fabric8</groupId>
 						<artifactId>docker-maven-plugin</artifactId>
 						<version>0.24.0</version>
@@ -126,7 +115,7 @@
 							</authConfig>
 							<images>
 								<image>
-									<name>${DOCKER_REGISTRY_USER}/${JOB_NAME}:${build.branch}</name>
+									<name>${DOCKER_REGISTRY_USER}/${JOB_NAME}:${BRANCH}</name>
 									<run>
 										<ports>
 											<port>8080:8080</port>
@@ -158,7 +147,7 @@
 										</assembly>
 										<entryPoint>
 											<shell>java -jar app/microservice-swarm.jar
-												-sapp/project-defaults.yml -Dswarm.bind.address=$(hostname -I | cut -d' ' -f1) -DapplicationName=${project.artifactId}-${project.version} -Dweb.root.context=${build.branch} -Dbuild.number=${build.number}</shell>
+												-sapp/project-defaults.yml -Dswarm.bind.address=$(hostname -I | cut -d' ' -f1) -DapplicationName=${project.artifactId}-${project.version} -Dweb.root.context=${BRANCH} -Dbuild.number=${BUILD_NUMBER}</shell>
 										</entryPoint>
 									</build>
 								</image>
