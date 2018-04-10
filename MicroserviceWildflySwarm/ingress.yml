@@ -13,7 +13,15 @@ spec:
         backend:
           serviceName: microservice-master
           servicePort: 8080
+      - path: /master/*
+        backend:
+          serviceName: microservice-master
+          servicePort: 8080
       - path: /blue
+        backend:
+          serviceName: microservice-blue
+          servicePort: 8080
+      - path: /blue/*
         backend:
           serviceName: microservice-blue
           servicePort: 8080
@@ -21,3 +29,7 @@ spec:
         backend:
           serviceName: microservice-green
           servicePort: 8080
+      - path: /green/*
+        backend:
+          serviceName: microservice-green
+          servicePort: 8080          
