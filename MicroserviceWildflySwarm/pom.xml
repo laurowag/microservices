@@ -116,7 +116,7 @@
                             </authConfig>
                             <images>
                                 <image>                                    
-                                    <name>${DOCKER_REGISTRY_USER}/${JOB_NAME}:${BRANCH}</name>
+                                    <name>${DOCKER_REGISTRY_USER}/${JOB_NAME}:${BRANCH}.${BUILD_NUMBER}</name>
                                     <run>
                                         <ports>
                                             <port>8080:8080</port>
