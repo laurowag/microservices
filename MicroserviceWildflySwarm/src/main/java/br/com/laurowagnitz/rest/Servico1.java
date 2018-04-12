@@ -1,5 +1,7 @@
 package br.com.laurowagnitz.rest;
 
+import br.com.laurowagnitz.model.Person;
+
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -11,6 +13,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -21,8 +24,6 @@ import javax.ws.rs.container.Suspended;
 import javax.ws.rs.container.TimeoutHandler;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
-import br.com.laurowagnitz.model.Person;
 
 @Path("/")
 @RequestScoped
@@ -53,6 +54,18 @@ public class Servico1 {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response consultarId(@PathParam("idToFind") int id) {
 		return Response.ok().entity(em.find(Person.class, id)).build();		
+	}
+
+	@DELETE
+	@Path("person/{idToDelete}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response excluir(@PathParam("idToDelete") int id) {
+		Person person = em.find(Person.class, id);
+		if (person == null) {
+		    return Response.status(Response.Status.NOT_FOUND).build(); 
+		} else {
+		    return Response.ok().build();
+		}
 	}
 
 	@POST
