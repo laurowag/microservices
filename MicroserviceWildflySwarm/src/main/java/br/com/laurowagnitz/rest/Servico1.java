@@ -39,7 +39,7 @@ public class Servico1 {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response statusOk() {
-		return Response.ok().entity("OK").getResultList()).build();
+		return Response.ok().entity("OK").build();
 	}
 
 	@GET
