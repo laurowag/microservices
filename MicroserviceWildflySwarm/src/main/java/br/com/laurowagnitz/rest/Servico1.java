@@ -62,12 +62,10 @@ public class Servico1 {
 	public Response excluir(@PathParam("idToDelete") int id) {
 		Person person = em.find(Person.class, id);
 		if (person == null) {
-			Response.status(Response.Status.NOT_FOUND).build(); 
+		    return Response.status(Response.Status.NOT_FOUND).build(); 
 		} else {
-		    Response.ok().build();
+		    return Response.ok().build();
 		}
-		
-		return Response.ok().entity().build();		
 	}
 
 	@POST
