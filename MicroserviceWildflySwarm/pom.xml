@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.laurowagnitz</groupId>
 	<artifactId>microservice</artifactId>
-	<name>Microservice Teste XY</name>
+	<name>Microservice Teste</name>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
