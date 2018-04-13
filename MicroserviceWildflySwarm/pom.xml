@@ -109,12 +109,10 @@
                         <version>0.24.0</version>
                         <configuration>
                             <registry>${DOCKER_REGISTRY_SERVER}</registry>
-                            <!--
                             <authConfig>
                                 <username>${DOCKER_REGISTRY_USER}</username>
                                 <password>${DOCKER_REGISTRY_PASSWORD}</password>
                             </authConfig>
-                            -->
                             <images>
                                 <image>                                    
                                     <name>${DOCKER_REGISTRY_USER}/${JOB_NAME}:${BRANCH}.${BUILD_NUMBER}</name>
