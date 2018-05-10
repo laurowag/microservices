@@ -25,11 +25,3 @@ spec:
         backend:
           serviceName: microservice-blue
           servicePort: 8080
-      - path: /green
-        backend:
-          serviceName: microservice-green
-          servicePort: 8080
-      - path: /green/*
-        backend:
-          serviceName: microservice-green
-          servicePort: 8080          
