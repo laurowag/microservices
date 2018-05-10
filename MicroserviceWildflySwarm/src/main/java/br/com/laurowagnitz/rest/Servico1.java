@@ -76,7 +76,7 @@ public class Servico1 {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response incluir(Person person) {		
 		/*
-		Person resultado = em.merge(person);z
+		Person resultado = em.merge(person);
 		return Response.ok().entity(resultado).build();
 		*/
 		return Response.ok().build();
