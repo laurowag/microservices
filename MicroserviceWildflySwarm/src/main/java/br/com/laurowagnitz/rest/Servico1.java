@@ -60,7 +60,7 @@ public class Servico1 {
 	@Path("person/{idToDelete}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response excluir(@PathParam("idToDelete") int id) {
-		/*
+		/*.
 		Person person = em.find(Person.class, id);
 		if (person == null) {
 		    return Response.status(Response.Status.NOT_FOUND).build(); 
