@@ -34,7 +34,7 @@ spec:
         imagePullPolicy: Always
         env:
         - name: DATABASE_URI
-          value: "jdbc:sqlserver://${DATABASE_SERVER};database=receituario;user=${DATABASE_USER}@laurowagnitz;password=${DATABASE_PASSWORD};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
+          value: "jdbc:sqlserver://${DATABASE_SERVER};database=teste"
         - name: DATABASE_USER
           value: "${DATABASE_USER}"
         - name: DATABASE_PASSWORD
