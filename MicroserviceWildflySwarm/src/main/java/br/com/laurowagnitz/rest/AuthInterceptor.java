@@ -16,7 +16,7 @@ public class AuthInterceptor implements ContainerRequestFilter {
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
         if (requestContext.getHeaders().getFirst("authorization") == null) {
-            throw new WebApplicationException("401");
+            throw new WebApplicationException(401);
         }  
     }
 
