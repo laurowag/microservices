@@ -22,13 +22,19 @@ spec:
         livenessProbe:
           httpGet:
             path: /${BRANCH}
-            port: 8080            
+            port: 8080
+            httpHeaders:
+            - name: authorization
+              value: teste
           initialDelaySeconds: 30
           periodSeconds: 30
         readinessProbe:
           httpGet:
             path: /${BRANCH}
             port: 8080            
+            httpHeaders:
+            - name: authorization
+              value: teste
           initialDelaySeconds: 30
           periodSeconds: 30
         imagePullPolicy: Always
